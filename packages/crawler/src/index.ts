@@ -1,10 +1,9 @@
 import { PlaywrightCrawler, FileDownload, type PlaywrightCrawlingContext } from 'crawlee';
-import stealthPlugin from 'puppeteer-extra-plugin-stealth';
-import { firefox } from 'playwright-extra';
-
 import { crawlerDefault } from './config.js';
 
-firefox.use(stealthPlugin());
+// import stealthPlugin from 'puppeteer-extra-plugin-stealth';
+// import { firefox } from 'playwright-extra';
+// firefox.use(stealthPlugin());
 
 
 const downloadCrawler = new FileDownload({
@@ -68,7 +67,7 @@ const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
 
 
 const parsers = {
-    watches: parseWatchesPage,
+    watch: parseWatchesPage,
     phones: parsePhonesPage
 }
 
@@ -76,26 +75,33 @@ const parsers = {
 const crawler = new PlaywrightCrawler({
     ...crawlerDefault,
     async requestHandler({ request, page, enqueueLinks, log, pushData }) {
-        const title = await page.locator('.section__title').first().innerText()
-        const raw_price = await page.locator('.product__price').first().innerText()
+        if (
+            page.url() !== "https://pitergsm.ru/catalog/watch/" &&
+            page.url() !== "https://pitergsm.ru/catalog/phones/"
+        ) {
+            const label = page.url().slice('https://pitergsm.ru/catalog/'.length).split('/')[0]
 
-        // const specsBrand = await page.locator('.specs__name', { hasText: "Бренд" })
+            log.info(label)
+            log.info(parsers[label])
 
-        const additionalData = await parsers[request.label](page)
+            const title = await page.locator('.section__title').first().innerText()
+            const raw_price = await page.locator('.product__price').first().innerText()
 
-        await pushData({ title, raw_price, ...additionalData }, request.label);
+            const specsBrand = await page.locator('.specs__name', { hasText: "Бренд" }).first().innerText()
+            const additionalData = await parsers[label](page)
 
-        const image = await page.locator('.prodslider__pic-img').first().getAttribute('src')
+            await pushData({ title, raw_price, ...additionalData }, label);
 
-        await downloadCrawler.addRequests([
-            'https://pitergsm.ru' + image
-        ])
+            const image = await page.locator('.prodslider__pic-img').first().getAttribute('src')
 
-        await enqueueLinks({
-            selector: 'a.prodcard__name'
-        });
-
-        // log.info(`Title of ${request.loadedUrl} is '${title}'`);
+            await downloadCrawler.addRequests([
+                'https://pitergsm.ru' + image
+            ])
+        } else {
+            await enqueueLinks({
+                selector: 'a.prodcard__name'
+            });
+        }
     }
 });
 
@@ -103,12 +109,10 @@ await crawler.run([
     {
         url: 'https://pitergsm.ru/catalog/watch/',
         crawlDepth: 2,
-        label: "watches"
     },
     {
         url: 'https://pitergsm.ru/catalog/phones/',
         crawlDepth: 2,
-        label: "phones"
     }
 ]);
 

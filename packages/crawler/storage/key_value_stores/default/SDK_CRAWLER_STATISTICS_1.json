@@ -1,42 +1,29 @@
 {
-  "requestsFinished": 0,
+  "requestsFinished": 5,
   "requestsFailed": 0,
   "requestsRetries": 0,
   "requestsFailedPerMinute": 0,
-  "requestsFinishedPerMinute": 0,
-  "requestMinDurationMillis": null,
-  "requestMaxDurationMillis": 0,
+  "requestsFinishedPerMinute": 5,
+  "requestMinDurationMillis": 6116,
+  "requestMaxDurationMillis": 34363,
   "requestTotalFailedDurationMillis": 0,
-  "requestTotalFinishedDurationMillis": 0,
-  "crawlerStartedAt": "2026-04-30T06:21:04.982Z",
+  "requestTotalFinishedDurationMillis": 101720,
+  "crawlerStartedAt": "2026-04-30T06:49:51.659Z",
   "crawlerFinishedAt": null,
-  "statsPersistedAt": "2026-04-30T06:23:06.043Z",
-  "crawlerRuntimeMillis": 121261,
-  "crawlerLastStartTimestamp": 1777530064782,
-  "requestRetryHistogram": [],
+  "statsPersistedAt": "2026-04-30T06:50:51.641Z",
+  "crawlerRuntimeMillis": 60191,
+  "crawlerLastStartTimestamp": 1777531791450,
+  "requestRetryHistogram": [
+    5
+  ],
   "statsId": 1,
   "requestAvgFailedDurationMillis": null,
-  "requestAvgFinishedDurationMillis": null,
-  "requestTotalDurationMillis": 0,
-  "requestsTotal": 0,
+  "requestAvgFinishedDurationMillis": 20344,
+  "requestTotalDurationMillis": 101720,
+  "requestsTotal": 5,
   "requestsWithStatusCode": {
-    "200": 4
+    "200": 7
   },
   "errors": {},
-  "retryErrors": {
-    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\packages\\crawler\\src\\index.ts:79:69": {
-      "missing error code": {
-        "TimeoutError": {
-          "locator.innerText: Timeout 30000ms exceeded.": {
-            "count": 2
-          }
-        },
-        "Error": {
-          "locator.innerText: Target page, context or browser has been closed": {
-            "count": 2
-          }
-        }
-      }
-    }
-  }
+  "retryErrors": {}
 }
