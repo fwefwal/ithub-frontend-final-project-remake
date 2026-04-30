@@ -1,6 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { PlaywrightCrawler, FileDownload, type PlaywrightCrawlingContext } from 'crawlee';
-import { parseCharacteristic } from './helpers.js';
+import { parseCharacteristic, selectTab } from './helpers.js';
 import { crawlerDefault } from './config.js';
 
 // import stealthPlugin from 'puppeteer-extra-plugin-stealth';
@@ -19,24 +19,33 @@ const downloadCrawler = new FileDownload({
 
 
 const parseWatchesPage = async (page: PlaywrightCrawlingContext["page"]) => {
-    await page.locator('[data-target="#tab-about"]').first().click()
-    await page.waitForSelector('.textoverflow__text')
+    await selectTab(page, 'about')
     const description = await page.locator('.textoverflow__text').innerHTML()
 
+    await selectTab(page, 'specs')
+
     return {
-        category: 'watches',
-        description
+        category: 'watch',
+        description,
+        compatibility: await parseCharacteristic(page, /Совместимость/),
+        batteryCapacity: await parseCharacteristic(page, /Емкость аккумулятора/),
+        brand: await parseCharacteristic(page, /Бренд/),
+        screenResolution: await parseCharacteristic(page, /Разрешение экрана/),
+        bluetooth: await parseCharacteristic(page, /Bluetooth/),
+        navigation: await parseCharacteristic(page, /Системы навигации/),
     }
 }
 
 
 const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
-    await page.locator('[data-target="#tab-specs"]').first().click()
-    await page.waitForSelector('#tab-specs')
+    await selectTab(page, 'about')
+    const description = await page.locator('.textoverflow__text').innerHTML()
+
+    await selectTab(page, 'specs')
 
     return {
-        category: 'headphones',
-        description: '',
+        category: 'phones',
+        description,
         screenSize: await parseCharacteristic(page, /Диагональ/),
         cpu: await parseCharacteristic(page, /Процессор/),
         cpuCores: await parseCharacteristic(page, /Количество ядер/),

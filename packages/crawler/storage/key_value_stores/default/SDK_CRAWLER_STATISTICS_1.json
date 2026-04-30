@@ -1,36 +1,45 @@
 {
-  "requestsFinished": 8,
+  "requestsFinished": 4,
   "requestsFailed": 0,
   "requestsRetries": 0,
   "requestsFailedPerMinute": 0,
-  "requestsFinishedPerMinute": 5,
-  "requestMinDurationMillis": 8563,
-  "requestMaxDurationMillis": 34996,
+  "requestsFinishedPerMinute": 1,
+  "requestMinDurationMillis": 21887,
+  "requestMaxDurationMillis": 91879,
   "requestTotalFailedDurationMillis": 0,
-  "requestTotalFinishedDurationMillis": 162256,
-  "crawlerStartedAt": "2026-04-30T08:37:47.458Z",
-  "crawlerFinishedAt": "2026-04-30T08:39:21.337Z",
-  "statsPersistedAt": "2026-04-30T08:39:21.337Z",
-  "crawlerRuntimeMillis": 94096,
-  "crawlerLastStartTimestamp": 1777538267241,
+  "requestTotalFinishedDurationMillis": 176456,
+  "crawlerStartedAt": "2026-04-30T09:03:08.749Z",
+  "crawlerFinishedAt": null,
+  "statsPersistedAt": "2026-04-30T09:07:08.760Z",
+  "crawlerRuntimeMillis": 240207,
+  "crawlerLastStartTimestamp": 1777539788553,
   "requestRetryHistogram": [
-    8
+    4
   ],
   "statsId": 1,
   "requestAvgFailedDurationMillis": null,
-  "requestAvgFinishedDurationMillis": 20282,
-  "requestTotalDurationMillis": 162256,
-  "requestsTotal": 8,
+  "requestAvgFinishedDurationMillis": 44114,
+  "requestTotalDurationMillis": 176456,
+  "requestsTotal": 4,
   "requestsWithStatusCode": {
-    "200": 9
+    "200": 24
   },
   "errors": {},
   "retryErrors": {
-    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\packages\\crawler\\src\\index.ts:69:73": {
+    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\node_modules\\.pnpm\\@apify+timeout@0.3.3\\node_modules\\@apify\\src\\index.ts:87:74": {
+      "missing error code": {
+        "Error": {
+          "requestHandler timed out after 60 seconds.": {
+            "count": 12
+          }
+        }
+      }
+    },
+    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\packages\\crawler\\src\\index.ts:78:73": {
       "missing error code": {
         "TimeoutError": {
           "locator.innerText: Timeout 30000ms exceeded.": {
-            "count": 1
+            "count": 3
           }
         }
       }
