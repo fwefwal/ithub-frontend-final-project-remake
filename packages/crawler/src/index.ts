@@ -1,5 +1,10 @@
 import { PlaywrightCrawler, FileDownload, type PlaywrightCrawlingContext } from 'crawlee';
+import stealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { firefox } from 'playwright-extra';
+
 import { crawlerDefault } from './config.js';
+
+firefox.use(stealthPlugin());
 
 
 const downloadCrawler = new FileDownload({
@@ -73,9 +78,9 @@ const crawler = new PlaywrightCrawler({
     async requestHandler({ request, page, enqueueLinks, log, pushData }) {
         const title = await page.locator('.section__title').first().innerText()
         const raw_price = await page.locator('.product__price').first().innerText()
-        
+
         // const specsBrand = await page.locator('.specs__name', { hasText: "Бренд" })
-        
+
         const additionalData = await parsers[request.label](page)
 
         await pushData({ title, raw_price, ...additionalData }, request.label);
@@ -97,12 +102,12 @@ const crawler = new PlaywrightCrawler({
 await crawler.run([
     {
         url: 'https://pitergsm.ru/catalog/watch/',
-        crawlDepth: 1,
+        crawlDepth: 2,
         label: "watches"
     },
     {
         url: 'https://pitergsm.ru/catalog/phones/',
-        crawlDepth: 1,
+        crawlDepth: 2,
         label: "phones"
     }
 ]);

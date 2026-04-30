@@ -2,9 +2,7 @@ import type { PlaywrightCrawlerOptions } from 'crawlee';
 import { BrowserName, DeviceCategory, OperatingSystemsName } from '@crawlee/browser-pool';
 import { launchOptions } from 'camoufox-js';
 import { firefox } from 'playwright-extra';
-import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 
-firefox.use(stealthPlugin());
 
 export const crawlerDefault: PlaywrightCrawlerOptions = {
     postNavigationHooks: [
@@ -36,6 +34,6 @@ export const crawlerDefault: PlaywrightCrawlerOptions = {
     failedRequestHandler({ request, log }) {
         log.error(`Request ${request.url} failed too many times.`);
     },
-    maxRequestsPerCrawl: 10,
+    maxRequestsPerCrawl: 0,
     headless: false,
 };
