@@ -10,15 +10,15 @@ importers:
 
   apps/store:
     dependencies:
+      '@repo/convex':
+        specifier: workspace:*
+        version: link:../../packages/convex
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       better-convex-nuxt:
         specifier: ^0.3.4
         version: 0.3.4(@better-auth/core@1.4.9(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.7(zod@4.3.6))(jose@6.2.2)(kysely@0.28.16)(nanostores@1.2.0))(@better-auth/utils@0.3.0)(@opentelemetry/api@1.9.1)(@standard-schema/spec@1.1.0)(better-call@1.1.7(zod@4.3.6))(better-sqlite3@12.9.0)(magicast@0.5.2)(nanostores@1.2.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)(vite@8.0.0-beta.18(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(tsx@4.21.0)(yaml@2.8.3))(vue@3.5.32(typescript@6.0.3))
-      convex:
-        specifier: ^1.35.1
-        version: 1.35.1(react@19.2.5)
       nuxt:
         specifier: ^4.4.2
         version: 4.4.2(@babel/core@7.29.0)(@babel/plugin-proposal-decorators@7.29.0(@babel/core@7.29.0))(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@parcel/watcher@2.5.6)(@types/node@24.12.2)(@vue/compiler-sfc@3.5.32)(better-sqlite3@12.9.0)(cac@6.7.14)(db0@0.3.4(better-sqlite3@12.9.0))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(rolldown@1.0.0-rc.8(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(rollup-plugin-visualizer@7.0.1(rolldown@1.0.0-rc.8(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2))(rollup@4.60.1))(rollup@4.60.1)(srvx@0.11.15)(terser@5.46.1)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.0-beta.18(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(tsx@4.21.0)(yaml@2.8.3))(vue-tsc@3.2.6(typescript@6.0.3))(xml2js@0.6.2)(yaml@2.8.3)
@@ -28,6 +28,31 @@ importers:
       vue-router:
         specifier: ^5.0.4
         version: 5.0.4(@vue/compiler-sfc@3.5.32)(vue@3.5.32(typescript@6.0.3))
+
+  packages/convex:
+    dependencies:
+      better-sqlite3:
+        specifier: 12.2.0
+        version: 12.2.0
+      convex:
+        specifier: ^1.35.1
+        version: 1.35.1(react@19.2.5)
+      tsx:
+        specifier: ^4.21.0
+        version: 4.21.0
+    devDependencies:
+      '@tsconfig/node24':
+        specifier: ^24.0.4
+        version: 24.0.4
+      '@types/node':
+        specifier: ^24.12.0
+        version: 24.12.2
+      oxfmt:
+        specifier: ^0.37.0
+        version: 0.37.0
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
 
   packages/crawler:
     dependencies:

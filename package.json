@@ -5,9 +5,9 @@
   "scripts": {
     "storybook": "pnpm -F @repo/ui storybook",
     "store:dev": "pnpm -F store dev",
-    "convex:init": "pnpm -F store convex:init",
-    "convex:import": "pnpm -F store convex:import",
-    "convex:backup": "pnpm -F store convex:backup",
+    "convex:dev": "pnpm -F @repo/convex dev",
+    "convex:import": "pnpm -F @repo/convex import",
+    "convex:backup": "pnpm -F @repo/convex backup",
     "crawler:dev": "pnpm -F @repo/crawler dev",
     "crawler:install": "pnpm -F @repo/crawler install"
   },

@@ -1,6 +1,6 @@
 
 <script lang="ts" setup>
-import { api } from '../../convex/_generated/api'
+import { api } from '@repo/convex/api'
 
 const { data: brands, error } = await useConvexQuery(
   api.brands.get, 

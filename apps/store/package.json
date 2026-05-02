@@ -7,15 +7,12 @@
     "dev": "nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "convex:init": "convex dev",
-    "convex:import": "convex import ./convex/backup.zip --replace",
-    "convex:backup": "convex export --path ./convex/backup.zip"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "@repo/convex": "workspace:*",
     "better-convex-nuxt": "^0.3.4",
-    "convex": "^1.35.1",
     "nuxt": "^4.4.2",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
