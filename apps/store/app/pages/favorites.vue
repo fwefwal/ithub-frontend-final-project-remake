@@ -2,10 +2,30 @@
 import { ProductCard } from '@repo/ui';
 import { api } from '@repo/convex/api'
 
-const { data: products, error } = await useConvexQuery(
-    api.products.get,
-    {}
-)
+import airpodsImage from '~/assets/images/products/airpods_max.png'
+import appleWatchImage from '~/assets/images/products/apple_watch.png'
+
+// const { data: products, error } = await useConvexQuery(
+//     api.products.get,
+//     {}
+// )
+
+const products = [
+    {
+        _id: '09a7saijhc87a6d',
+        title: 'AirPods Max Silver',
+        sku: '#53459358345',
+        image: airpodsImage
+    },
+    {
+        _id: 'saadoiq398cziod',
+        title: 'Apple Watch Series 9 GPS 41mm Starlight Aluminium',
+        sku: '#63632324',
+        image: appleWatchImage
+    }
+]
+const error = null
+
 </script>
 
 <template>
@@ -19,7 +39,7 @@ const { data: products, error } = await useConvexQuery(
         <div v-if="!error">
             <section class="products-grid">
                 <ProductCard class="product-item" v-for="product in products" :key="product._id" :title="product.title"
-                    :current_price="product.current_price" />
+                    :sku="product.sku" :image="product.image" wide />
             </section>
         </div>
     </main>
@@ -41,10 +61,8 @@ const { data: products, error } = await useConvexQuery(
 }
 
 .products-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, max-content);
-    gap: 16px;
-    padding: 56px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 </style>

@@ -6,6 +6,12 @@ const meta = {
   title: 'Organisms/ProductCard',
   component: ProductCard,
   tags: ['autodocs'],
+  args: {
+    wide: false,
+    current_price: 490,
+    sku: '#25139526913984',
+    title: 'AirPods Max Silver'
+  },
 } satisfies Meta<typeof ProductCard>;
 
 export default meta;
@@ -13,16 +19,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Desktop: Story = {
   globals: {
-    viewport: { 
+    viewport: {
       value: 'desktop'
     }
-  }  
+  }
 };
 
 export const Mobile: Story = {
   globals: {
-    viewport: { 
+    viewport: {
       value: 'mobile1'
     }
-  }  
+  }
 };
