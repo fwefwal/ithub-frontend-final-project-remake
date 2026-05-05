@@ -10,7 +10,7 @@ import appleWatchImage from '~/assets/images/products/airpods_watch.png'
 //   {}
 // )
 
-const product = [
+const products = [
   {
     title: 'AirPods Max Silver',
     sku: '#53459358345',
@@ -29,46 +29,38 @@ const error = null
 </script>
 
 <template>
-    <main class="page">
+  <main class="page">
     <h2 class="page-title">Favorite</h2>
-  <p v-if="!products?.length">
-    Здесь пока нет товаров...
-  </p>
-  <div v-if="!error">
-    <section class="products-grid">
-      <ProductCard 
-        class="product-item" 
-        v-for="product in products" 
-        :key="product._id" 
-        :title="product.title" 
-        :current_price="product.current_price" 
-        :sku="product.sku"
-        :image="product.image"
-        wide
-      />
-    </section>
-  </div>
-</main>
+    <p v-if="!products?.length">
+      Здесь пока нет товаров...
+    </p>
+    <div v-if="!error">
+      <section class="products-grid">
+        <ProductCard class="product-item" v-for="product in products" :key="product._id" :title="product.title"
+          :current_price="product.current_price" :sku="product.sku" :image="product.image" wide />
+      </section>
+    </div>
+  </main>
 </template>
 
 <style scoped>
-    .page {
-        flex: 1;
-        padding: 40px 17px;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
+.page {
+  flex: 1;
+  padding: 40px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 
-    .page-title {
-        font-size: 24px;
-        line-height: 32px;
+.page-title {
+  font-size: 24px;
+  line-height: 32px;
 
-    }
+}
 
-  .products-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 </style>

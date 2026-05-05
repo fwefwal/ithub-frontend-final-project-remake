@@ -19,16 +19,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Desktop: Story = {
   globals: {
-    viewport: { 
+    viewport: {
       value: 'desktop'
     }
-  }  
+  }
 };
 
 export const Mobile: Story = {
   globals: {
-    viewport: { 
+    viewport: {
       value: 'mobile1'
     }
-  }  
+  }
 };
