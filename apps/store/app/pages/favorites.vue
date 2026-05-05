@@ -2,7 +2,7 @@
 import { ProductCard } from '@repo/ui';
 import { api } from '@repo/convex/api'
 import airpodsImage from '~/assets/images/products/airpods_max.png'
-import appleWatchImage from '~/assets/images/products/airpods_watch.png'
+import appleWatchImage from '~/assets/images/products/apple_watch.png'
 
 
 // const { data: products, error } = await useConvexQuery(
