@@ -39,7 +39,7 @@ const emit = defineEmits(['buyNow', 'favorite'])
         <span v-if="!props.wide" class="product-price">${{ props.current_price }}</span>
         <span v-else="props.wide" class="product-sku">{{ props.sku }}</span>
 
-        <Button v-if="props.in_cart" small label="Go to Cart" />
+        <Button v-if="props.in_cart" small variant="stroke" color="black" label="Go to Cart" />
         <Button v-else-if="!props.wide" small label="Buy Now" @click="emit('buyNow')" />
     </article>
 </template>
