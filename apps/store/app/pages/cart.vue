@@ -1,45 +1,56 @@
 <script lang="ts" setup>
 import { api } from '@repo/convex/api'
+import { ProductCard } from '@repo/ui'
 import { useCart } from '~/stores/cart'
+import airpodsMaxImage from '~/assets/images/products/airpods_max.png'
 
-const { data: brands, error } = await useConvexQuery(
-  api.brands.get,
+const cart = useCart()
+
+// TODO уточнять список интересующих продуктов
+const { data: products, error } = await useConvexQuery(
+  api.products.get,
   {}
 )
 
-const cartStore = useCart()
-
-const {
-  execute, pending, reset, error: mutationError
-} = useConvexMutation(api.brands.create)
-
-const handleNewBrand = async () => {
-  if (brandInput.value.trim().length === 0) {
-    return
-  }
-
-  await execute({ title: brandInput.value })
-}
-
-const brandInput = ref('')
+// const {
+//   execute, pending, reset, error: mutationError
+// } = useConvexMutation(api.brands.create)
 
 </script>
 
 <template>
-  <p v-if="error || mutationError">
-    {{ error?.message || mutationError?.message }}
-  </p>
+  <main class="page">
+    <h2 class="page-title">Shopping Cart</h2>
+    
+    <!-- <p v-if="error || mutationError">
+      {{ error?.message || mutationError?.message }}
+    </p> -->
 
-  <form @submit.prevent="handleNewBrand">
-    <input v-model="brandInput" placeholder="Новый бренд">
-    <button type="submit">Добавить</button>
-  </form>
+    <section class="products-grid">
+      <ProductCard class="product-item" v-for="product in cart.items" :title="product.title"
+        :current_price="product.price" :sku="product.sku" :key="product.sku" :image="airpodsMaxImage" wide />
+    </section>
 
-  <p v-if="pending">Обработка</p>
-
-  <div v-if="!error">
-    <ul>
-      <li v-for="brand in brands" :key="brand._id">{{ brand.title }}</li>
-    </ul>
-  </div>
+  </main>
 </template>
+
+<style scoped>
+.page {
+  flex: 1;
+  padding: 40px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page-title {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+</style>

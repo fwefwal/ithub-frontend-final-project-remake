@@ -25,20 +25,20 @@ const props = defineProps<{
 
 <template>
   <header>
-    <Logo class="brand" color="black" @click="emit('indexClick')"/>
+    <Logo class="brand" color="black" @click="emit('indexClick')" />
     <Field placeholder="Search" :style="fieldStyles">
       <template #icon-left>
         <Icon variant="search" />
       </template>
     </Field>
     <div class="icons">
-      <Icon class="favorites" variant="favorites" @click="emit('favoritesClick')"/>
+      <Icon class="favorites" variant="favorites" @click="emit('favoritesClick')" />
       <section class="cart-wrapper" :class="{ 'cart-wrapper-empty': !props.cartQuantity }">
         <Icon variant="cart" @click="emit('cartClick')" />
         <span v-if="props.cartQuantity > 0" class="cart-label">{{ props.cartQuantity }}</span>
       </section>
     </div>
-    <Icon variant="burger" class="burger"/>
+    <Icon variant="burger" class="burger" />
   </header>
 </template>
 
@@ -68,8 +68,8 @@ header {
 
 .brand,
 .favorites {
-    cursor: pointer;
-    user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .cart-wrapper {
@@ -104,7 +104,11 @@ header {
     padding: 24px 16px;
   }
 
-  .icons,
+  .icons {
+    margin-left: auto;
+    margin-right: 24px;
+  }
+
   .input,
   .wrapper {
     display: none;

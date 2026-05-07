@@ -55,7 +55,6 @@ const error = null
 .page-title {
   font-size: 24px;
   line-height: 32px;
-
 }
 
 .products-grid {

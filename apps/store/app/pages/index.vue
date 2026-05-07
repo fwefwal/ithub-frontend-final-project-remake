@@ -8,7 +8,7 @@ import { useCart } from '~/stores/cart';
 type Product = DataModel["products"]["document"]
 
 const { data: products, error } = await useConvexQuery(
-  api.products.get, 
+  api.products.get,
   {}
 )
 
@@ -26,35 +26,35 @@ const buyNow = (product: Product) => {
 </script>
 
 <template>
-  <Cta />
-  <BrowseByCategory />
-  <Featured />
+  <main class="page">
+    <Cta />
+    <BrowseByCategory />
+    <Featured />
 
-  <p v-if="error">
-    {{ error?.message }}
-  </p>
+    <p v-if="error">
+      {{ error?.message }}
+    </p>
 
-  <div v-if="!error">
-    <section class="products-grid">
-      <ProductCard 
-        class="product-item" 
-        v-for="product in products" 
-        :key="product._id" 
-        :title="product.title" 
-        :current_price="product.current_price"
-        :in_cart="cart.hasProduct(product._id)"
-        @buy-now="() => buyNow(product)"
-      />
-    </section>
-  </div>
+    <div v-if="!error">
+      <section class="products-grid">
+        <ProductCard class="product-item" v-for="product in products" :key="product._id" :title="product.title"
+          :current_price="product.current_price" :in_cart="cart.hasProduct(product._id)"
+          @buy-now="() => buyNow(product)" />
+      </section>
+    </div>
+  </main>
 </template>
 
 <style scoped>
-  .products-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, max-content);
-    gap: 16px;
-    padding: 56px 16px;
-  }
+.page {
+  flex: 1;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, max-content);
+  gap: 16px;
+  padding: 56px 16px;
+}
 </style>
