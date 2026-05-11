@@ -4,6 +4,9 @@ import { api } from '@repo/convex/api'
 import airpodsImage from '~/assets/images/products/airpods_max.png'
 import appleWatchImage from '~/assets/images/products/apple_watch.png'
 
+definePageMeta({
+  middleware: ['authenticated']
+})
 
 // const { data: products, error } = await useConvexQuery(
 //   api.products.get, 

@@ -2,6 +2,7 @@
 import Logo from "./Logo.vue";
 import Field from "./Field.vue";
 import Icon from "./Icon.vue";
+import Button from "./Button.vue";
 
 const fieldStyles: Partial<CSSStyleDeclaration> = {
   width: "372px",
@@ -11,14 +12,15 @@ const fieldStyles: Partial<CSSStyleDeclaration> = {
 
 const emit = defineEmits<{
   (event: "createAccount"): void;
-  (event: "login"): void;
-  (event: "logout"): void;
+  (event: "loginClick"): void;
+  (event: "logoutClick"): void;
   (event: "cartClick"): void;
   (event: "favoritesClick"): void;
   (event: "indexClick"): void;
 }>();
 
 const props = defineProps<{
+  loggedIn: boolean
   cartQuantity: number
 }>()
 </script>
@@ -32,11 +34,14 @@ const props = defineProps<{
       </template>
     </Field>
     <div class="icons">
-      <Icon class="favorites" variant="favorites" @click="emit('favoritesClick')" />
+      <Icon v-if="props.loggedIn" class="favorites" variant="favorites" @click="emit('favoritesClick')" />
       <section class="cart-wrapper" :class="{ 'cart-wrapper-empty': !props.cartQuantity }">
         <Icon variant="cart" @click="emit('cartClick')" />
         <span v-if="props.cartQuantity > 0" class="cart-label">{{ props.cartQuantity }}</span>
       </section>
+
+      <Button v-if="!props.loggedIn" label="Login" @click="emit('loginClick')" />
+      <Button v-else label="Logout" @click="emit('logoutClick')" />
     </div>
     <Icon variant="burger" class="burger" />
   </header>
@@ -60,6 +65,12 @@ header {
 .icons {
   display: flex;
   gap: 24px;
+  align-items: center;
+}
+
+.icons>button {
+  height: 32px;
+  padding: 0 8px;
 }
 
 .burger {

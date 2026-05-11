@@ -11,6 +11,7 @@
 import type * as brands from "../brands.js";
 import type * as categories from "../categories.js";
 import type * as characteristics from "../characteristics.js";
+import type * as customers from "../customers.js";
 import type * as products from "../products.js";
 import type * as seed from "../seed.js";
 
@@ -24,6 +25,7 @@ declare const fullApi: ApiFromModules<{
   brands: typeof brands;
   categories: typeof categories;
   characteristics: typeof characteristics;
+  customers: typeof customers;
   products: typeof products;
   seed: typeof seed;
 }>;
