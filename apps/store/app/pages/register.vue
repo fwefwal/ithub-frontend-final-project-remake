@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { Field, Button } from '@repo/ui'
 
-
 const { fetch: refreshSession } = useUserSession()
 
 const errorRef = ref<Error | null>(null)
@@ -16,7 +15,7 @@ const handleLogin = async (event: SubmitEvent) => {
     try {
         errorRef.value = null
 
-        await $fetch('/api/login', {
+        await $fetch('/api/register', {
             method: "POST",
             body: {
                 email,
@@ -24,8 +23,7 @@ const handleLogin = async (event: SubmitEvent) => {
             }
         })
 
-        await refreshSession()
-        await navigateTo('/')
+        await navigateTo('/login')
     } catch (error) {
         errorRef.value = error as Error
     }
@@ -34,15 +32,15 @@ const handleLogin = async (event: SubmitEvent) => {
 
 <template>
     <main class="page">
-        <h2 class="page-title">Login</h2>
+        <h2 class="page-title">Sign Up</h2>
 
         <p v-if="errorRef">{{ errorRef?.message }}</p>
 
         <form class="form" method="post" @submit.prevent="handleLogin">
             <Field label="Email" placeholder="user@example.com" name="email" type="email" />
             <Field label="Password" placeholder="********" name="password" type="password" />
-            <Button label="Log In" type="submit" />
-            <NuxtLink href="/register">Create an account</NuxtLink>
+            <Button label="Sign Up" type="submit" />
+            <NuxtLink href="/login">Login an account</NuxtLink>
         </form>
     </main>
 </template>
