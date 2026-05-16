@@ -9,6 +9,10 @@ const { loggedIn, clear } = useUserSession()
 
 const cart = loggedIn ? useCartConvex() : useCartLocal()
 
+if ('fetch' in cart) {
+    await cart.fetch()
+}
+
 const { fullPath } = useRoute()
 
 const handleLogout = async () => {
@@ -18,15 +22,9 @@ const handleLogout = async () => {
 </script>
 
 <template>
-    <Header 
-        :cart-quantity="cart.items.length" 
-        :logged-in="loggedIn"
-        @cart-click="navigateTo('/cart')"
-        @favorites-click="navigateTo('/favorites')" 
-        @index-click="navigateTo('/')" 
-        @logout-click="handleLogout"
-        @login-click="navigateTo('/login')"
-    />
+    <Header :cart-quantity="cart.items?.length" :logged-in="loggedIn" @cart-click="navigateTo('/cart')"
+        @favorites-click="navigateTo('/favorites')" @index-click="navigateTo('/')" @logout-click="handleLogout"
+        @login-click="navigateTo('/login')" />
     <NuxtPage />
     <Footer />
 </template>

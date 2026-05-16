@@ -11,6 +11,7 @@ type Product = DataModel["products"]["document"]
 
 const { user, loggedIn } = useUserSession()
 
+
 const { data: products, error } = await useConvexQuery(
   api.products.get,
   {}
@@ -18,13 +19,17 @@ const { data: products, error } = await useConvexQuery(
 
 const cart = loggedIn ? useCartConvex() : useCartLocal()
 
+if ('fetch' in cart) {
+  await cart.fetch()
+}
+
 const buyNow = (product: Product) => {
   cart.addProduct({
     sku: product._id,
     price: product.current_price,
     title: product.title,
     quantity: 1
-  }, user._id)
+  }, user?.id)
 }
 
 </script>

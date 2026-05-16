@@ -34,9 +34,7 @@ export const useCartLocal = defineStore('cart', {
         hasProduct(state) {
             return (sku: string) => Boolean(state.items.find(item => item.sku === sku))
         },
-        productTotal() {
-            return (price: number, quantity: number): number => price * quantity
-        },
+
         subTotal(state): number {
             return state.items.reduce((acc, { price, quantity }) => {
                 return acc + price * quantity
@@ -49,33 +47,29 @@ export const useCartLocal = defineStore('cart', {
     },
 
     actions: {
-        addProduct(item: CartItem) {
-            console.log(item)
-
-            const ix = this.items.findIndex(({ sku }) => sku === item.sku)
+        addProduct(newItem: CartItem) {
+            const ix = this.items.findIndex(({ sku }) => sku === newItem.sku)
 
             if (ix !== -1) {
                 this.items[ix]!.quantity += 1
             } else {
-                this.items.push(item)
+                this.items.push(newItem)
             }
-
-            console.log(this.items)
         },
 
-        changeQuantity(sku: string, newValue: number) {
-            const ix = this.items.findIndex((item) => sku === item.sku)
+        changeQuantity(updatedItem: CartItem) {
+            const ix = this.items.findIndex(({ sku }) => sku === updatedItem.sku)
 
-            if ((ix === -1) || (newValue < 0)) {
+            if ((ix === -1) || (updatedItem.quantity < 0)) {
                 return
             }
 
-            if (newValue === 0) {
+            if (updatedItem.quantity === 0) {
                 this.items.splice(ix, 1)
                 return
             }
 
-            this.items[ix]!.quantity = newValue
+            this.items[ix]!.quantity = updatedItem.quantity
         },
 
         clear() {

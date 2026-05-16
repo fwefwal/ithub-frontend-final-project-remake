@@ -30,6 +30,20 @@ export const getByCustomer = query({
     }
 })
 
+export const clearByCustomer = mutation({
+    args: {
+        customer: v.id("customers")
+    },
+    handler: async (ctx, args) => {
+        const customerCarts = await ctx.db.query('carts')
+            .filter(q => q.eq(q.field('customer'), args.customer)).collect()
+
+        for (const { _id } of customerCarts) {
+            await ctx.db.delete('carts', _id)
+        }
+    }
+})
+
 export const updateProduct = mutation({
     args: {
         customer: v.id("customers"),

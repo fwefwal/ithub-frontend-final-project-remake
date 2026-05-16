@@ -25,14 +25,9 @@ type CartStore = {
 }
 
 export const useCartConvex = defineStore('cart', {
-    state: async (): Promise<CartStore> => {
-        const convex = useConvex()
-
-        const { user } = useConvexAuth()
-        const items = await convex.query(api.carts.getByCustomer, { customer: user._id })
-
+    state: (): CartStore => {
         return {
-            items,
+            items: [],
             orderDetails: {
                 discount: null,
                 bonusCard: null,
@@ -46,9 +41,6 @@ export const useCartConvex = defineStore('cart', {
         hasProduct(state) {
             return (sku: string) => Boolean(state.items.find(item => item.sku === sku))
         },
-        productTotal() {
-            return (price: number, quantity: number): number => price * quantity
-        },
         subTotal(state): number {
             return state.items.reduce((acc, { price, quantity }) => {
                 return acc + price * quantity
@@ -61,7 +53,21 @@ export const useCartConvex = defineStore('cart', {
     },
 
     actions: {
-        async addProduct(item: CartItem, customerId: CustomerId) {
+        async fetch() {
+            const convex = useConvex()
+
+            const { user } = useConvexAuth()
+    
+            if (!user) {
+                throw new Error('Not authenticated')
+            }
+    
+            console.log(user)
+    
+            this.items = await convex.query(api.carts.getByCustomer, { customer: user.id })
+        },
+
+        async _mutateProduct(item: CartItem, customerId: CustomerId) {
             const convex = useConvex()
 
             await convex.mutation(api.carts.updateProduct, {
@@ -71,23 +77,17 @@ export const useCartConvex = defineStore('cart', {
             })
         },
 
-        changeQuantity(sku: string, newValue: number) {
-            const ix = this.items.findIndex((item) => sku === item.sku)
-
-            if ((ix === -1) || (newValue < 0)) {
-                return
-            }
-
-            if (newValue === 0) {
-                this.items.splice(ix, 1)
-                return
-            }
-
-            this.items[ix]!.quantity = newValue
+        async addProduct(newItem: CartItem, customerId: CustomerId) {
+            await this._mutateProduct(newItem, customerId)
         },
 
-        clear() {
-            this.items = []
+        async changeQuantity(updatedItem: CartItem, customerId: CustomerId) {
+            await this._mutateProduct(updatedItem, customerId)
+        },
+
+        async clear(customerId: CustomerId) {
+            const convex = useConvex()
+            await convex.mutation(api.carts.clearByCustomer, { customer: customerId })
         }
     }
 })
