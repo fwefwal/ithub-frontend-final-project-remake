@@ -17,6 +17,6 @@ export default defineNuxtConfig({
       include: [
         '@repo/convex/api',
       ]
-    }
+    },
   },
 } as NuxtConfig)
