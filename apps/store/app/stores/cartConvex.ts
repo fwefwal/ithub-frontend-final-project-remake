@@ -71,15 +71,18 @@ export const useCartConvex = defineStore('cart-convex', {
 
         async addProduct(newItem: CartItem, customerEmail: CustomerEmail) {
             await this._mutateProduct(newItem, customerEmail)
+            await this.fetch(customerEmail)
         },
 
         async changeQuantity(updatedItem: CartItem, customerEmail: CustomerEmail) {
             await this._mutateProduct(updatedItem, customerEmail)
+            await this.fetch(customerEmail)
         },
 
         async clear(customerEmail: CustomerEmail) {
             const convex = useConvex()
             await convex.mutation(api.carts.clearByCustomer, { customerEmail })
+            await this.fetch(customerEmail)
         }
     }
 })
