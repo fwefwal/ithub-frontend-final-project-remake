@@ -12,7 +12,7 @@ const meta = {
     variant: {
       control: 'select',
       options: [
-        "twitter", "close", "toEdit", "burger", "cameras", "headphones", "phones", "smartWatches", "delivery", "guaranteed", "stock", "battery", "computers", "gaming", "location", "shipping", "favorites", "cart", "search",
+        "twitter", "facebook", "instagram", "tiktok", "close", "toEdit", "burger", "cameras", "headphones", "phones", "smartWatches", "delivery", "guaranteed", "stock", "battery", "computers", "gaming", "location", "shipping", "favorites", "cart", "search",
         "computersLarge", "gamingLarge", "headphonesLarge", "arrow"]
     },
   },
@@ -22,7 +22,7 @@ const meta = {
         components: { story },
         setup() {
           const style = computed(() => ({
-            backgroundColor: ['twitter'].includes(args.variant) ? 'black' : 'white',
+            backgroundColor: ['twitter', 'facebook', 'instagram', 'tiktok'].includes(args.variant) ? 'black' : 'white',
             width: 'max-content'
           }));
 

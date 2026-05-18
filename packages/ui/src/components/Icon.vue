@@ -1,8 +1,8 @@
 <script setup lang="ts">
-export type IconVariant = 
-    | "twitter" | "close" | "toEdit" | "burger" | "cameras" | "computers" 
-    | "gaming" | "headphones" | "phones" | "smartWatches" | "delivery" 
-    | "guaranteed" | "stock" | "battery" | "location" | "shipping" | "favorites" 
+export type IconVariant =
+    | "twitter" | "facebook" | "instagram" | "tiktok" | "close" | "toEdit" | "burger" | "cameras" | "computers"
+    | "gaming" | "headphones" | "phones" | "smartWatches" | "delivery"
+    | "guaranteed" | "stock" | "battery" | "location" | "shipping" | "favorites"
     | "cart" | "search" | "computersLarge" | "gamingLarge" | "headphonesLarge" | "arrow"
 
 const props = defineProps<{
@@ -10,6 +10,9 @@ const props = defineProps<{
 }>()
 
 import twitter from '../assets/icons/16px/Twitter.svg'
+import facebook from '../assets/icons/16px/Facebook.svg'
+import instagram from '../assets/icons/16px/Instagram.svg'
+import tiktok from '../assets/icons/16px/Tiktok.svg'
 
 import close from '../assets/icons/24px/Close.svg'
 import toEdit from '../assets/icons/24px/To edit.svg'
@@ -41,6 +44,9 @@ import stock from '../assets/icons/56px/Stock.svg'
 
 const sources = {
     twitter,
+    facebook,
+    instagram,
+    tiktok,
     close,
     toEdit,
     arrow,
@@ -67,10 +73,7 @@ const sources = {
 </script>
 
 <template>
-    <img 
-        :src="sources[props.variant]" 
-        :alt="props.variant" 
-    />
+    <img :src="sources[props.variant]" :alt="props.variant" />
 </template>
 
 <style scoped></style>
