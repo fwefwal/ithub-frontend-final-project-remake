@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { m } from 'vue-router/dist/index-BzEKChPW.js'
 import image1Src from '~/assets/images/products/airpods_max.png'
 import image2Src from '~/assets/images/products/airpods_max.png'
 import image3Src from '~/assets/images/products/apple_watch.png'
@@ -47,12 +46,28 @@ const product = {
             value: 4323,
             measure: 'mAh',
         },
+        screenResolution: {
+            value: '2796x1290',
+            measure: 'px',
+        },
+        pixelDensity: {
+            value: 460,
+            measure: 'ppi',
+        },
+        screenType: {
+            value: 'OLED',
+            measure: null,
+        },
+        weight: {
+            value: 240,
+            measure: 'g',
+        },
     }
-}
+} as const;
 
 const mainCharacteristics = {
     phones: [
-        { 
+        {
             title: 'screenSize',
             description: 'Screen size'
         },
@@ -78,7 +93,29 @@ const mainCharacteristics = {
         },
     ],
     watches: []
-}
+} as const;
+
+const additionalCharacteristics = {
+    phones: [
+        {
+            title: 'screenResolution',
+            description: 'The screen resolution'
+        },
+        {
+            title: 'pixelDensity',
+            description: 'The pixel density'
+        },
+        {
+            title: 'screenType',
+            description: 'Screen type'
+        },
+        {
+            title: 'weight',
+            description: 'Weight'
+        }
+    ],
+    watches: []
+} as const;
 
 </script>
 
@@ -96,18 +133,29 @@ const mainCharacteristics = {
 
         <h2 class="product-title">{{ product.title }}</h2>
         <section class="prices">
-            <span class="price price--current">{{  product.current_price }}</span>
+            <span class="price price--current">{{ product.current_price }}</span>
             <span class="price price--raw">{{ product.raw_price }}</span>
         </section>
         <section class="characteristics">
             <section v-for="item in mainCharacteristics[product.category]" class="characteristic">
                 <p class="characteristic-description">{{ item.description }}</p>
                 <p class="characteristic-value">
-                    {{ product.characteristics[item.title].value }} 
+                    {{ product.characteristics[item.title].value }}
                     {{ product.characteristics[item.title].measure }}
                 </p>
             </section>
         </section>
+
+        <details class="details">
+            <summary class="details-summary">
+                <h3 class="details-title">Details</h3>
+            </summary>
+            <p class="details-description">
+                Just as a book is judged by its cover, the first thing you notice when you pick up a modern
+                smartphone is the display. Nothing surprising, because advanced...
+            </p>
+            <!-- перебрать дополнительные характеристики по аналогии с основными выше -->
+        </details>
     </main>
 </template>
 
