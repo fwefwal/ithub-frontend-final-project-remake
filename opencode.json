@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "github": {
+      "type": "local",
+      "command": ["npx", "-y", "@anthropic-ai/claude-code-mcp", "--stdio", "--github"],
+      "enabled": true,
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "docker": {
+      "type": "local",
+      "command": ["docker", "mcp"],
+      "enabled": true
+    }
+  }
+}

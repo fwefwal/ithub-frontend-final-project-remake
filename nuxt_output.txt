@@ -1,0 +1,135 @@
+
+> store@ dev C:\Users\commi\Desktop\ithub-frontend-final-project\apps\store
+> nuxt dev --dotenv .env.local
+
+|
+•  [32mNuxt [1m4.4.5[22m[39m[90m (with [39m[90mNitro [1m2.13.4[22m[39m[90m, Vite [1m7.3.2[22m[39m[90m and Vue [1m3.5.34[22m[39m[90m)[39m
+[get-port] Unable to find an available port (tried 3000 on host "localhost"). Using alternative port 3001.
+
+[32m  ➜ Local:   [39m [36m[4mhttp://localhost:[1m3001[22m/[24m[39m
+[90m  ➜ Network:  use [37m--host[90m to expose[39m
+
+[90m[[90mbetter-convex-nuxt[90m][39m [36mi[39m Nuxt DevTools integration enabled
+[33m  ➜ DevTools: [39m[2mpress [22m[32mShift[39m[2m + [22m[32mAlt[39m[2m + [22m[32mD[39m[2m in the browser (v4.0.0-alpha.4-29627452.481947a)[22m
+
+[32m√[39m Vite client built in 129ms
+[32m√[39m Vite server built in 47ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 8280ms
+[36mi[39m Vite server warmed up in 1ms
+[36mi[39m Vite client warmed up in 5ms
+[43m[30m WARN [39m[49m NuxtConvexError: Auth proxy upstream returned 404 for http://127.0.0.1:3211/api/auth/get-session. This usually means Better Auth routes are not registered in [36mconvex/http.ts[39m or [36mconvex.siteUrl[39m points to the wrong host. Did you register Better Auth routes in [36mconvex/http.ts[39m and deploy them?
+[33m[34mℹ[39m Websocket client connected. [0] [undefined] (untrusted)[39m
+|
+o  [1m[33m Vite DevTools Permission Request [39m[22m -----------------------------------------+
+|                                                                              |
+|  [0mA browser is requesting permissions to connect to the Vite DevTools.        |
+|                                                                              |
+|  User Agent   : [33m[1mElectron 39.8.8 | Windows 10[22m[39m                                 |
+|  Origin       : [33m[1mhttp://localhost:3001[22m[39m                                        |
+|  Client Token : [32m[1mcommon-pandas-doubt[22m[39m                                          |
+|                                                                              |
+|  Manual Auth URL   :                                                         |
+|  [36m[4mhttp://localhost:5173/__devtools/auth?id=tangy-berries-deny[24m[39m                 |
+|  Manual Auth Token : [36m[1mtangy-berries-deny[22m[39m                                      |
+|                                                                              |
+|  This will allow the browser to interact with the server, make file changes  |
+|   and run commands.                                                          |
+|  [31m[1mYou should only trust your local development browsers.[22m[39m[0m                      |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+[41m[30m ERROR [39m[49m [1m[31m[DTK0013][39m[22m Unauthorized access to method "devtoolskit:internal:messages:list" from client [0]
+[2m╰▶[22m [2msee:[22m [36mhttps://devtools.vite.dev/errors/dtk0013[39m
+
+
+[41m[30m ERROR [39m[49m [1m[31m[DTK0011][39m[22m RPC error on executing "devtoolskit:internal:messages:list"
+[2m╰▶[22m [2msee:[22m [36mhttps://devtools.vite.dev/errors/dtk0011[39m
+
+[31m[34mℹ[39m Websocket client disconnected. [0][39m
+[33m[34mℹ[39m Websocket client connected. [1] [undefined] (untrusted)[39m
+|
+o  [1m[33m Vite DevTools Permission Request [39m[22m -----------------------------------------+
+|                                                                              |
+|  [0mA browser is requesting permissions to connect to the Vite DevTools.        |
+|                                                                              |
+|  User Agent   : [33m[1mElectron 39.8.8 | Windows 10[22m[39m                                 |
+|  Origin       : [33m[1mhttp://localhost:3001[22m[39m                                        |
+|  Client Token : [32m[1mcommon-pandas-doubt[22m[39m                                          |
+|                                                                              |
+|  Manual Auth URL   :                                                         |
+|  [36m[4mhttp://localhost:5173/__devtools/auth?id=tangy-berries-deny[24m[39m                 |
+|  Manual Auth Token : [36m[1mtangy-berries-deny[22m[39m                                      |
+|                                                                              |
+|  This will allow the browser to interact with the server, make file changes  |
+|   and run commands.                                                          |
+|  [31m[1mYou should only trust your local development browsers.[22m[39m[0m                      |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+[41m[30m ERROR [39m[49m [1m[31m[DTK0013][39m[22m Unauthorized access to method "devtoolskit:internal:messages:list" from client [1]
+[2m╰▶[22m [2msee:[22m [36mhttps://devtools.vite.dev/errors/dtk0013[39m
+
+
+[41m[30m ERROR [39m[49m [1m[31m[DTK0011][39m[22m RPC error on executing "devtoolskit:internal:messages:list"
+[2m╰▶[22m [2msee:[22m [36mhttps://devtools.vite.dev/errors/dtk0011[39m
+
+[31m[34mℹ[39m Websocket client disconnected. [1][39m
+[33m[34mℹ[39m Websocket client connected. [2] [undefined] (untrusted)[39m
+|
+o  [1m[33m Vite DevTools Permission Request [39m[22m -----------------------------------------+
+|                                                                              |
+|  [0mA browser is requesting permissions to connect to the Vite DevTools.        |
+|                                                                              |
+|  User Agent   : [33m[1mElectron 39.8.8 | Windows 10[22m[39m                                 |
+|  Origin       : [33m[1mhttp://localhost:3001[22m[39m                                        |
+|  Client Token : [32m[1mcommon-pandas-doubt[22m[39m                                          |
+|                                                                              |
+|  Manual Auth URL   :                                                         |
+|  [36m[4mhttp://localhost:5173/__devtools/auth?id=tangy-berries-deny[24m[39m                 |
+|  Manual Auth Token : [36m[1mtangy-berries-deny[22m[39m                                      |
+|                                                                              |
+|  This will allow the browser to interact with the server, make file changes  |
+|   and run commands.                                                          |
+|  [31m[1mYou should only trust your local development browsers.[22m[39m[0m                      |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+[41m[30m ERROR [39m[49m [1m[31m[DTK0013][39m[22m Unauthorized access to method "devtoolskit:internal:messages:list" from client [2]
+[2m╰▶[22m [2msee:[22m [36mhttps://devtools.vite.dev/errors/dtk0013[39m
+
+
+[41m[30m ERROR [39m[49m [1m[31m[DTK0011][39m[22m RPC error on executing "devtoolskit:internal:messages:list"
+[2m╰▶[22m [2msee:[22m [36mhttps://devtools.vite.dev/errors/dtk0011[39m
+
+[31m[34mℹ[39m Websocket client disconnected. [2][39m
+[36mi[39m nuxt.config.ts updated. Restarting Nuxt...
+[90m[[90mbetter-convex-nuxt[90m][39m [36mi[39m Nuxt DevTools integration enabled
+[33m  ➜ DevTools: [39m[2mpress [22m[32mShift[39m[2m + [22m[32mAlt[39m[2m + [22m[32mD[39m[2m in the browser (v4.0.0-alpha.4-29627452.481947a)[22m
+
+[32m√[39m Vite client built in 223ms
+[32m√[39m Vite server built in 114ms
+
+[43m[30m WARN [39m[49m Unresolvable [36moptimizeDeps.include[39m entries:
+  [36mconvex/server[39m
+  [36m@vue/devtools-kit[39m
+  [36m@vue/devtools-core[39m
+  [36m@vitejs/devtools/client/inject[39m
+  [36m@vitejs/devtools-kit/client[39m
+  [36merror-stack-parser-es[39m
+  [36mvite-plugin-vue-tracer/client/overlay[39m
+
+Update your [36mnuxt.config.ts[39m:
+
+[90mexport default defineNuxtConfig({
+  vite: {
+    optimizeDeps: {
+      include: []
+    }
+  }
+})
+
+[39mLearn more: https://vite.dev/guide/dep-pre-bundling.html
+
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 9582ms
+[36mi[39m Vite server warmed up in 4ms
+[36mi[39m Vite client warmed up in 8ms

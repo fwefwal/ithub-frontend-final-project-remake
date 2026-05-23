@@ -1,106 +1,75 @@
-# ithub-frontend-vue-final-project
+# Nuxt Minimal Starter
 
-(контрольная точка №6)
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Задание
+## Setup
 
-Реализовать приложение на основе следующего [макета](https://www.figma.com/design/EQC47Bzy09sBIVIj7iF3ij/%D0%98%D1%82%D0%BE%D0%B3%D0%BE%D0%B2%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-%22%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BD%D1%8B%D0%B9-%D1%81%D0%B5%D0%BC%D0%B8%D0%BD%D0%B0%D1%80%22?node-id=2-2&t=sYjzDJjRgB7ZUjZ3-1).
-
-## Задания и критерии
-
-### Функционал деталей продукта (6 баллов)
-
-- [ ] добавить в `packages/ui` компонент `DetailCard` (1 балл), добавить к нему стори (1 балл)
-- [ ] использовать созданный компонент на странице `/product` (1 балл)
-- [ ] дописать вывод дополнительной информации (Details) на странице `/product` (1 балл)
-- [ ] стилизовать блоки с характеристиками и деталями страницы `/product` в соответствии с макетом мобильной версии (2 балла)
-
-### Функционал Регистрации (8 баллов)
-
-- [x] добавить страницу с формой (2 балла)
-- [x] добавить api-route с обработкой формы (2 балла)
-- [x] добавить convex-функции для проверки данных и регистрации (2 балла)
-- [x] реализовать перенаправление на страницу логина в случае успеха (1 балл)
-- выбрасывать с серверного слоя и отображать на клиенте сообщения об ошибках (1 балл)
-
-#### `packages/crawler`
-
-- донастроить кроулер для получения данных о планшетах (3 балла)
-
-#### `store/app/components`
-
-- доработать компонент `Cta` (1 балл)
-
-- [x] доработать компонент `BrowseByCategory` (1 балл за стилизацию мобильной версии, 1 балл за адаптив под десктоп, 1 балл за слайдер)
-
-- доработать компонент `Featured` (1 балл за стилизацию мобильной версии, 2 балла за адаптив под десктоп), получать товары с бэка (1 балл), реализовать рандомизацию получаемых товаров (1 балл)
-
-#### `packages/ui`
-
-- доработать компонент `CategoryCard` (1 балл), написать стори для компонента `CategoryCard` (1 балл)
-
-- дописать стори для компонента `Header` (1 балл)
-
-- найти и добавить иконку для скидок (`discounts`), внести ее в `Icon` и её стори, а также в перечисление внутри `CategoryCard` (1 балл)
-
-- [x] найти и добавить иконки для недостающих соцсетей, внести их в `Icon` и её стори, а также в компонент `Footer` (1 балл)
-
-- [x] доработать компонент `Footer`: доработать стилизацию (1 балл), сделать адаптив под десктоп (2 балла), добавить в `links` и `socialLinks` недостающие ссылки (1 балл)
-
-- разработать компонент и написать стори для `CartPrice`: на вход должны приходить цена одного товара и функция для обработки клика на удаление товара, кнопки + и - должны функционировать, изменяя количество товаров, при этом стоимость должна пересчитываться (3 балла)
-
-## Установка и настройка
-
-#### Настройка монорепозитория
-
-1. Установите `pnpm`
-
-```powershell
-Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expression
-```
+Make sure to install dependencies:
 
 ```bash
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-2. Отключите `corepack`
+## Development Server
 
-```powershell
-corepack disable
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-3. Установите зависимости
+## Production
 
-```sh
-pnpm i
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
 
-4. Запустите докер-контейнеры
+Locally preview production build:
 
-```sh
-docker compose up
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
 ```
 
-5. (при необходимости) Сгенерируйте ключ доступа 
-
-```sh
-docker compose exec backend ./generate_admin_key.sh
-```
-
-6. (при отсутствии) Создайте файл `apps/store/.env.local` и внесите в него ключ
-
-#### Настройка @repo/crawler
-
-1. Установите библиотеки
-
-```powershell
-cd packages\crawler
-
-pnpm dlx camoufox fetch
-```
-
-2. Установите биндинги
-
-```powershell
-pnpm approve-builds // Выберите better-sqlite3
-```
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
